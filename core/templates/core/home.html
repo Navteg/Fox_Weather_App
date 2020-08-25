@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<!-- CSS Styling -->
+<link rel="stylesheet" href="{% static 'main.css' %}">
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- FontAwesome -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+    <style media="screen">
+
+    *{
+      /* padding-top:75px; */
+
+      /* background: linear-gradient(red,blue); */
+      background-size: cover;
+      color: black;
+      font-family:Helvatica,'sans-serif';
+    }
+
+    h2,h3,h4{
+      color:black;
+    }
+
+    .bg-img{
+
+      background:url('/static/images/background.jpg');
+      min-height: 700px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+
+
+
+    .bg-img::after{
+      opacity: 0.5; filter: blur(8px);
+  -webkit-filter: blur(8px);
+    }
+    .container {
+      justify-content: center;
+      text-align: center;
+      position: absolute;
+      left:30%;
+      top:15%;
+      right:40%;
+      max-width:500px;
+      background-color: transparent ;
+    }
+/*
+    .heading h2{
+      left:15%;
+    } */
+
+    /* Full-width input fields */
+    input[type=text] {
+      font-size: 25px;
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background:transparent;
+      border-bottom: 1px solid black;
+    }
+
+    ::placeholder{
+      color: black;
+    }
+
+    input[type=text]:focus {
+
+      outline: none;
+      border: 2px solid black;
+      font-size: 25px;
+    }
+
+    .inline{
+      display: flex;
+    }
+
+    #btn-2{
+      background-color: transparent;
+      border: none;
+    }
+
+    hr{
+      border:1px solid red;
+      width:45%;
+      /* width:5px;
+      color:orange; */
+    }
+
+    /* Set a style for the submit button */
+    .btn {
+      text-transform: uppercase;
+      font-size: 25px;
+      background-color: transparent;
+      color: black;
+      padding: 16px 20px;
+      border: 1px solid black;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    .btn:hover {
+      background-color: black;
+      color: white;
+    }
+    .card{
+      background-color: transparent;
+    }
+    </style>
+
+      <div class="bg-img">
+        <div class="container">
+          <div class="heading">
+            <h2> <strong>Check Weather</strong> </h2>
+            <hr>
+          </div>
+          <form method="GET">
+            <div class="inline">
+              <input type="text" name="city" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter City'" placeholder="Enter City" />
+              <button type="submit" id="btn-2">
+                <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button type="submit" class="btn">Check Weather
+
+            </button>
+          </form>
+          <br><br>
+
+
+          {% if result %}
+          <div class="row">
+
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title"> <b>{{result.region}}</b> </h3>
+
+                  <h4> <b style="visibility:true;">{{result.temp_now}}</b><sup>°C</sup></h4>
+                  <h4> <b style="visibility:true;">{{result.temp_now_f}}</b><sup>°F</sup>
+                  <h4><b> {{result.dayhour}} </b> </h4>
+                  <h4><b>{{result.weather_now}}</b></h4>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h4> <b>Precipitaion: {{result.ppt}}</b> </h4>
+                  <h4><b>Humidity: <br> {{result.hm}} </b> </h4>
+                  <h4><b>Wind: <br> {{result.ws}}</b></h4>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+            {% endif %}
+          <!-- </div> -->
+
+        </div>
+      </div>
+
+
+
+
+  </body>
+</html>
